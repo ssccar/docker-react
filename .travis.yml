@@ -1,12 +1,11 @@
 language: generic
 
+sudo: required
 services:
   - docker
 
 before_install:
-  - docker_build -t ssccar/docker-react -f Dockerfile.dev .
+  - docker build -t simoncar/docker-react -f Dockerfile.dev .  # f means force to use and -t instead tag
 
-# thanks to -- --coverage tests will exit otherwise they hang forever
 script:
   - docker run -e CI=true simoncar/docker-react npm run test
-
