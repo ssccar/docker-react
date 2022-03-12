@@ -1,6 +1,8 @@
 sudo: required
 
-servives:
+language: generic
+
+services:
   - docker
 
 before_install:
@@ -8,5 +10,5 @@ before_install:
 
 # thanks to -- --coverage tests will exit otherwise they hang forever
 script:
-  - docker run simoncar/docker-react npm run test -- --coverage
+  - docker run -e CI=true simoncar/docker-react npm run test
 
